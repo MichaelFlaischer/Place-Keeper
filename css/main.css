@@ -64,6 +64,27 @@ footer {
   width: 100%;
 }
 
+video {
+  width: 50vw;
+  height: auto;
+  max-height: 50vh;
+  object-fit: cover;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+section p {
+  max-width: 80%;
+  margin: 10px 0;
+}
+
 @media (orientation: landscape) {
   body {
     display: grid;
