@@ -1,3 +1,20 @@
+:root {
+  --background-image: url('img/background.jpg');
+  --nav-bg-color: rgba(0, 0, 0, 0.7);
+  --nav-text-color: #fff;
+  --nav-hover-bg-color: rgba(255, 255, 255, 0.3);
+  --header-bg-color: rgba(34, 139, 34, 0.7);
+  --main-bg-color: rgba(0, 0, 0, 0.7);
+  --footer-bg-color: rgba(34, 139, 34, 0.7);
+  --text-color: #fff;
+
+  --video-width: 25vw;
+  --video-max-height: 25vh;
+  --nav-width: 20%;
+  --content-width: 80%;
+  --section-max-width: 80%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,13 +26,13 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: url('img/background.jpg') no-repeat center center fixed;
+  background: var(--background-image) no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: var(--text-color);
 }
 
 nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--nav-bg-color);
   padding: 10px;
   text-align: center;
   position: sticky;
@@ -33,30 +50,30 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--nav-text-color);
   padding: 10px;
   transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--nav-hover-bg-color);
 }
 
 header {
-  background-color: rgba(34, 139, 34, 0.7);
+  background-color: var(--header-bg-color);
   padding: 20px;
   text-align: center;
 }
 
 main {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--main-bg-color);
   padding: 20px;
   flex: 1;
   overflow-y: auto;
 }
 
 footer {
-  background-color: rgba(34, 139, 34, 0.7);
+  background-color: var(--footer-bg-color);
   padding: 20px;
   text-align: center;
   position: sticky;
@@ -65,9 +82,9 @@ footer {
 }
 
 video {
-  width: 50vw;
+  width: var(--video-width);
   height: auto;
-  max-height: 50vh;
+  max-height: var(--video-max-height);
   object-fit: cover;
 }
 
@@ -81,14 +98,14 @@ section {
 }
 
 section p {
-  max-width: 80%;
+  max-width: var(--section-max-width);
   margin: 10px 0;
 }
 
 @media (orientation: landscape) {
   body {
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: var(--nav-width) var(--content-width);
     grid-template-rows: auto 1fr auto;
   }
 
