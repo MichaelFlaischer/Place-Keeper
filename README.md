@@ -1,0 +1,2 @@
+# Place-Keeper
+ This project is a web-based system utilizing the Google Maps API to locate and save strategic locations. The system allows users to store selected locations in the browser's Local Storage, enhancing user experience and quick access. Designed with a military-inspired interface, it serves as a platform for managing important strategic points. Technologies used include HTML, CSS, JavaScript, Google Maps API, and Local Storage API.
