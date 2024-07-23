@@ -27,7 +27,7 @@
 
 body,
 html {
-  height: 100%;
+  height: 120%;
   display: flex;
   flex-direction: column;
   background: var(--background-image) no-repeat center center fixed;
@@ -42,6 +42,8 @@ nav {
   z-index: 1000;
   display: flex;
   justify-content: center;
+  position: sticky;
+  top: 0;
 }
 
 nav ul {
@@ -82,6 +84,8 @@ header {
   padding: 5px;
   text-align: center;
   position: static;
+  top: 0;
+  z-index: 1000;
 }
 
 main {
@@ -95,8 +99,10 @@ footer {
   background-color: var(--secondary-bg-color);
   padding: 20px;
   text-align: center;
-  position: static;
+  position: sticky;
+  bottom: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 video {
@@ -147,7 +153,7 @@ input[type='range'] {
   border: none;
   border-radius: 5px;
   background-color: var(--input-bg-color);
-  color: var(--text-color);
+  color: var (--text-color);
 }
 
 input[type='color'] {
@@ -171,11 +177,6 @@ button {
   form {
     font-size: var(--font-size-medium);
   }
-
-  header,
-  footer {
-    position: static;
-  }
 }
 
 @media (max-width: 768px) {
@@ -198,7 +199,6 @@ button {
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px 0;
-    flex-grow: 1;
   }
 
   nav ul {
@@ -209,6 +209,7 @@ button {
   nav ul li {
     margin: 10px 0;
   }
+
   nav ul li a,
   nav ul li button {
     width: 100%;
