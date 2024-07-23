@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Settings</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/user-settings.css" />
+    <script src="js/userService.js" defer></script>
   </head>
   <body>
     <nav>
@@ -14,26 +14,47 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="user-settings.html">User Settings</a></li>
         <li><a href="places.html">Places</a></li>
+        <li class="nav-spacer"></li>
+        <li><button onclick="applyDefaultSettings()">Apply Default Theme</button></li>
+        <li><button onclick="applyUserSettings()">Apply User Theme</button></li>
       </ul>
     </nav>
     <header>
       <h1>User Settings</h1>
     </header>
     <main>
-      <section id="settings">
-        <h2>Configure Your Settings</h2>
-        <p>
-          This page allows you to configure your user settings. Here, you can update your personal information, change your password, and set preferences for
-          notifications and alerts.
-        </p>
-        <p>
-          Your settings will be saved locally on your device using localStorage, ensuring that your preferences are maintained even if you log out or close the
-          browser.
-        </p>
+      <section>
+        <h2>Welcome to the User Settings</h2>
+        <form class="user-settings-form" onsubmit="validateForm(event)">
+          <label for="email">E-Mail</label>
+          <input type="email" class="email" name="email" placeholder="Insert your email here" required />
+          <span class="error-message"></span>
+
+          <label for="age">Age</label>
+          <input type="range" class="age" name="age" min="0" max="100" value="18" />
+          <span class="age-display">18</span>
+
+          <label for="bg-color">Set Background Color</label>
+          <input type="color" class="bg-color" name="bg-color" value="#000000" />
+
+          <label for="text-color">Set Text Color</label>
+          <input type="color" class="text-color" name="text-color" value="#000000" />
+
+          <label for="birth-date">Birth Date</label>
+          <input type="date" class="birth-date" name="birth-date" />
+
+          <label for="birth-time">Birth Time</label>
+          <input type="time" class="birth-time" name="birth-time" />
+
+          <button type="submit">Save Settings</button>
+          <button type="button" class="reset-settings" onclick="resetForm()">Reset to Default</button>
+        </form>
       </section>
     </main>
     <footer>
       <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
     </footer>
+
+    <div class="notification"></div>
   </body>
 </html>

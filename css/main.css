@@ -1,18 +1,22 @@
 :root {
   --background-image: url('img/background.jpg');
-  --nav-bg-color: rgba(0, 0, 0, 0.7);
-  --nav-text-color: #fff;
-  --nav-hover-bg-color: rgba(255, 255, 255, 0.3);
-  --header-bg-color: rgba(34, 139, 34, 0.7);
-  --main-bg-color: rgba(0, 0, 0, 0.7);
-  --footer-bg-color: rgba(34, 139, 34, 0.7);
+  --primary-bg-color: rgba(0, 0, 0, 0.7);
+  --secondary-bg-color: rgba(34, 139, 34, 0.7);
   --text-color: #fff;
+  --hover-bg-color: rgba(255, 255, 255, 0.3);
 
-  --video-width: 25vw;
-  --video-max-height: 25vh;
-  --nav-width: 20%;
-  --content-width: 80%;
-  --section-max-width: 80%;
+  --input-bg-color: #333;
+  --box-shadow-color: rgba(0, 0, 0, 0.5);
+
+  --font-size-large: 16px;
+  --font-size-medium: 14px;
+  --font-size-small: 12px;
+
+  --video-width: 50vw;
+  --video-max-height: 50vh;
+  --nav-width: 10%;
+  --content-width: 90%;
+  --section-max-width: 90%;
 }
 
 * {
@@ -32,11 +36,9 @@ html {
 }
 
 nav {
-  background-color: var(--nav-bg-color);
+  background-color: var(--primary-bg-color);
   padding: 10px;
   text-align: center;
-  position: sticky;
-  top: 0;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -46,38 +48,54 @@ nav ul {
   list-style-type: none;
   display: flex;
   gap: 15px;
+  flex-grow: 1;
 }
 
-nav ul li a {
+.nav-spacer {
+  flex-grow: 1;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a,
+nav ul li button {
   text-decoration: none;
-  color: var(--nav-text-color);
+  color: var(--text-color);
   padding: 10px;
   transition: background-color 0.3s ease;
+  background-color: var(--primary-bg-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-nav ul li a:hover {
-  background-color: var(--nav-hover-bg-color);
+nav ul li a:hover,
+nav ul li button:hover {
+  background-color: var(--hover-bg-color);
 }
 
 header {
-  background-color: var(--header-bg-color);
-  padding: 20px;
+  background-color: var(--secondary-bg-color);
+  padding: 5px;
   text-align: center;
+  position: static;
 }
 
 main {
-  background-color: var(--main-bg-color);
+  background-color: var(--primary-bg-color);
   padding: 20px;
   flex: 1;
   overflow-y: auto;
 }
 
 footer {
-  background-color: var(--footer-bg-color);
+  background-color: var(--secondary-bg-color);
   padding: 20px;
   text-align: center;
-  position: sticky;
-  bottom: 0;
+  position: static;
   width: 100%;
 }
 
@@ -102,6 +120,70 @@ section p {
   margin: 10px 0;
 }
 
+form {
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--box-shadow-color);
+  width: 300px;
+  font-size: var(--font-size-large);
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='time'],
+input[type='color'],
+input[type='range'] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+}
+
+input[type='color'] {
+  height: 40px;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  form {
+    font-size: var(--font-size-medium);
+  }
+
+  header,
+  footer {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    font-size: var(--font-size-small);
+  }
+}
+
 @media (orientation: landscape) {
   body {
     display: grid;
@@ -116,6 +198,7 @@ section p {
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px 0;
+    flex-grow: 1;
   }
 
   nav ul {
@@ -125,6 +208,11 @@ section p {
 
   nav ul li {
     margin: 10px 0;
+  }
+  nav ul li a,
+  nav ul li button {
+    width: 100%;
+    text-align: center;
   }
 
   header {
@@ -141,6 +229,5 @@ section p {
   footer {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
-    position: static;
   }
 }
