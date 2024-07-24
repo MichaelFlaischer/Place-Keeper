@@ -59,6 +59,7 @@ html {
   display: flex;
   gap: 1em;
   flex-grow: 1;
+  justify-content: center;
 }
 
 .nav-spacer {
@@ -153,6 +154,7 @@ html {
 
   .nav ul {
     flex-direction: column;
+    justify-content: flex-start;
   }
 
   .nav ul li {
