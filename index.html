@@ -26,10 +26,7 @@
         <main>
           <section>
             <h2>Welcome to the Military Secret Site</h2>
-            <video loop controls>
-              <source src="video/idf.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div class="video-container"></div>
             <p>This is a top-secret military site for managing attack targets against enemies. Access is restricted to authorized personnel only.</p>
             <p>
               In this home page, you will find general information and updates related to our mission and activities. Please ensure you have the necessary
@@ -66,5 +63,18 @@
         </footer>
       </div>
     </div>
+    <script>
+      function loadMainVideo() {
+        const videoContainer = document.querySelector('.video-container')
+        if (videoContainer) {
+          videoContainer.innerHTML = `<video loop controls>
+                <source src="video/idf.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>`
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadMainVideo)
+    </script>
   </body>
 </html>
