@@ -6,40 +6,61 @@
     <title>Places</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
-    <script src="js/utilService.js"></script>
-    <script src="js/userStorage.js"></script>
-    <script src="js/userService.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/places.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw_JKxikQSCVB_QccweBoxrmKitqptLJs&callback=initMap" defer></script>
+    <script src="js/utilService.js" defer></script>
+    <script src="js/userStorage.js" defer></script>
+    <script src="js/userService.js" defer></script>
+    <script src="js/placeService.js" defer></script>
   </head>
-  <body onload="onInit()">
+  <body onload="onInit(); initMap()">
     <div class="container">
       <nav class="nav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="user-settings.html">User Settings</a></li>
-          <li><a href="places.html">Places</a></li>
+          <li><a href="places.html">Strategic Places</a></li>
         </ul>
       </nav>
       <div class="content">
         <header>
-          <h1>Places</h1>
+          <h1>Strategic Places Management</h1>
         </header>
         <main>
-          <section id="places">
+          <section class="places">
             <h2>Strategic Locations</h2>
             <p>
-              On this page, we currently display a map showing key strategic locations. In the future, you will be able to manage and update information about
-              these locations, including adding new places and editing existing ones.
+              This section allows authorized personnel to view and manage key strategic locations critical to our mission success. Use the tools provided to add
+              new locations, update existing entries, and ensure all information is kept current.
             </p>
             <p>
-              The map is an essential tool for planning and executing our missions. Ensure that all changes are accurate and up-to-date to maintain operational
+              The map below displays current strategic locations. You can search for specific addresses or use your current location to find and add strategic
+              points.
+            </p>
+            <p>
+              Effective management of these locations is crucial for our operations. Ensure all changes are accurate and up-to-date to maintain operational
               efficiency.
             </p>
-            <p>
-              Effective management of these locations is critical to our mission success. Authorized personnel can access detailed information and strategic
-              plans.
-            </p>
-            <p>Our mapping system is continuously updated with the latest intelligence and operational data to provide accurate and actionable insights.</p>
-            <p>Please use the tools provided to mark new locations, update existing entries, and ensure all information is kept current.</p>
+            <p>This mapping system is continuously updated with the latest intelligence and operational data to provide accurate and actionable insights.</p>
+            <div class="map-container">
+              <div class="address-input">
+                <input type="text" class="address" placeholder="Enter address" />
+                <div class="search-buttons">
+                  <button onclick="geocodeAddress(document.querySelector('.address').value)">Search</button>
+                  <button onclick="getUserLocation()">Use My Location</button>
+                </div>
+              </div>
+              <div class="points-list">
+                <h3>Points List</h3>
+                <ul>
+                  <li>Point 1: 32.0853, 34.7818</li>
+                  <li>Point 2: 31.7683, 35.2137</li>
+                  <li>Point 3: 29.5581, 34.9482</li>
+                </ul>
+              </div>
+              <div class="map"></div>
+            </div>
+            <div class="notification"></div>
           </section>
         </main>
         <footer>

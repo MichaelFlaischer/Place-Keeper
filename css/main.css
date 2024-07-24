@@ -15,8 +15,8 @@
   --video-width: 70vw;
   --video-max-height: 70vh;
   --nav-width: 15%;
-  --content-width: 75%;
-  --section-max-width: 75%;
+  --content-width: 85%;
+  --section-max-width: 85%;
 }
 
 * {
@@ -99,12 +99,13 @@ html {
   display: none;
   position: fixed;
   bottom: 20px;
-  right: 20px;
-  background-color: var(--secondary-bg-color);
-  color: var(--text-color);
-  padding: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 15px;
   border-radius: 5px;
-  box-shadow: 0 0 10px var(--box-shadow-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1001;
 }
 
@@ -279,4 +280,25 @@ button {
   form {
     font-size: var(--font-size-small);
   }
+}
+
+.map {
+  height: 60vh;
+  width: 100%;
+}
+
+.address-input {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.address-input input {
+  padding: 10px;
+  width: 300px;
+}
+
+.address-input button {
+  padding: 10px;
 }

@@ -63,12 +63,3 @@ function resetColors() {
 
   showNotification('Colors reset to default!')
 }
-
-function showNotification(message) {
-  const notification = document.querySelector('.notification')
-  notification.textContent = message
-  notification.style.display = 'block'
-  setTimeout(function () {
-    notification.style.display = 'none'
-  }, 3000)
-}
