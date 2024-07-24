@@ -14,9 +14,9 @@
 
   --video-width: 70vw;
   --video-max-height: 70vh;
-  --nav-width: 25%;
+  --nav-width: 15%;
   --content-width: 75%;
-  --section-max-width: 90%;
+  --section-max-width: 75%;
 }
 
 * {
