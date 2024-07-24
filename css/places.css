@@ -80,6 +80,43 @@
   border-radius: 10px;
 }
 
+.general-dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  width: 300px;
+  max-width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-message {
+  margin-bottom: 20px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.dialog-actions button:hover {
+  background-color: var(--hover-bg-color);
+}
+
 @media (orientation: landscape) {
   .map-container {
     grid-template-columns: 70% 30%;

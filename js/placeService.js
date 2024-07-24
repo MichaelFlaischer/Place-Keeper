@@ -46,6 +46,18 @@ function placeMarker(location) {
       position: location,
       map: map,
     })
+
+    marker.addListener('click', () => {
+      showDialog(
+        `Selected location: ${marker.getPosition().lat().toFixed(6)}, ${marker.getPosition().lng().toFixed(6)}`,
+        () => {
+          console.log('Point confirmed')
+        },
+        () => {
+          console.log('Action cancelled')
+        }
+      )
+    })
   }
   map.panTo(location)
 }
@@ -83,12 +95,22 @@ function getUserLocation() {
   }
 }
 
-function showNotification(message) {
-  const notificationElement = document.querySelector('.notification')
-  notificationElement.textContent = message
-  notificationElement.style.display = 'block'
+function showDialog(message, onConfirm, onCancel) {
+  const dialog = document.querySelector('.general-dialog')
+  const dialogMessage = dialog.querySelector('.dialog-message')
+  const selectedLocation = dialog.querySelector('.selected-location')
+  const form = dialog.querySelector('form')
 
-  setTimeout(() => {
-    notificationElement.style.display = 'none'
-  }, 3000)
+  dialogMessage.textContent = message
+  selectedLocation.textContent = message
+
+  form.onsubmit = (event) => {
+    if (event.submitter.value === 'confirm') {
+      if (onConfirm) onConfirm()
+    } else {
+      if (onCancel) onCancel()
+    }
+  }
+
+  dialog.showModal()
 }
