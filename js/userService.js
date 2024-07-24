@@ -14,15 +14,15 @@ function loadColorsSettings() {
   } else {
     applySettings(settings)
   }
+}
 
-  function applySettings(settings) {
-    document.documentElement.style.setProperty('--primary-bg-color', settings.primaryBgColor)
-    document.documentElement.style.setProperty('--secondary-bg-color', settings.secondaryBgColor)
-    document.documentElement.style.setProperty('--text-color', settings.textColor)
-    document.documentElement.style.setProperty('--hover-bg-color', hexToRgbaWithShade(settings.primaryBgColor, 0.3))
-    document.documentElement.style.setProperty('--input-bg-color', settings.inputBgColor)
-    document.documentElement.style.setProperty('--box-shadow-color', settings.boxShadowColor)
-  }
+function applySettings(settings) {
+  document.documentElement.style.setProperty('--primary-bg-color', settings.primaryBgColor)
+  document.documentElement.style.setProperty('--secondary-bg-color', settings.secondaryBgColor)
+  document.documentElement.style.setProperty('--text-color', settings.textColor)
+  document.documentElement.style.setProperty('--hover-bg-color', hexToRgbaWithShade(settings.primaryBgColor, 0.3))
+  document.documentElement.style.setProperty('--input-bg-color', settings.inputBgColor)
+  document.documentElement.style.setProperty('--box-shadow-color', settings.boxShadowColor)
 }
 
 function defaultSettings() {
