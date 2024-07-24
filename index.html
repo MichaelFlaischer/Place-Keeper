@@ -12,59 +12,63 @@
     <script src="js/userService.js"></script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user-settings.html">User Settings</a></li>
-        <li><a href="places.html">Places</a></li>
-        <li class="nav-spacer"></li>
-        <li><button onclick="applyDefaultSettings()">Apply Default Theme</button></li>
-        <li><button onclick="applyUserSettings()">Apply User Theme</button></li>
-      </ul>
-    </nav>
-    <header>
-      <h1>Military Secret Site</h1>
-    </header>
-    <main>
-      <section>
-        <h2>Welcome to the Military Secret Site</h2>
-        <video loop controls>
-          <source src="video/idf.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <p>This is a top-secret military site for managing attack targets against enemies. Access is restricted to authorized personnel only.</p>
-        <p>
-          In this home page, you will find general information and updates related to our mission and activities. Please ensure you have the necessary clearance
-          before accessing any sensitive information.
-        </p>
-        <p>
-          Our mission is to ensure the safety and security of our nation through precise and strategic military operations. We utilize the latest technology and
-          intelligence to identify and neutralize threats.
-        </p>
-        <p>
-          The information provided on this site includes updates on current operations, strategic planning documents, and intelligence reports. Only authorized
-          personnel with the appropriate security clearance can access detailed mission data.
-        </p>
-        <p>
-          We work closely with various military branches and intelligence agencies to coordinate our efforts and ensure the effectiveness of our operations.
-          Collaboration and communication are key to our success.
-        </p>
-        <p>
-          Training and preparedness are crucial components of our strategy. We conduct regular training exercises to keep our personnel ready for any situation.
-          This site includes training schedules, resources, and performance assessments.
-        </p>
-        <p>
-          Our team is dedicated to continuous improvement and innovation. We encourage feedback and suggestions from all personnel to enhance our capabilities
-          and effectiveness. Please use the feedback form on this site to share your insights.
-        </p>
-        <p>
-          For any technical issues or support requests, please contact our IT department through the support page. We are committed to providing the necessary
-          tools and resources to support our mission.
-        </p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
-    </footer>
+    <div class="container">
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="user-settings.html">User Settings</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="nav-spacer"></li>
+          <li><button onclick="applyDefaultSettings()">Apply Default Theme</button></li>
+          <li><button onclick="applyUserSettings()">Apply User Theme</button></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <header>
+          <h1>Military Secret Site</h1>
+        </header>
+        <main>
+          <section>
+            <h2>Welcome to the Military Secret Site</h2>
+            <video loop controls>
+              <source src="video/idf.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p>This is a top-secret military site for managing attack targets against enemies. Access is restricted to authorized personnel only.</p>
+            <p>
+              In this home page, you will find general information and updates related to our mission and activities. Please ensure you have the necessary
+              clearance before accessing any sensitive information.
+            </p>
+            <p>
+              Our mission is to ensure the safety and security of our nation through precise and strategic military operations. We utilize the latest technology
+              and intelligence to identify and neutralize threats.
+            </p>
+            <p>
+              The information provided on this site includes updates on current operations, strategic planning documents, and intelligence reports. Only
+              authorized personnel with the appropriate security clearance can access detailed mission data.
+            </p>
+            <p>
+              We work closely with various military branches and intelligence agencies to coordinate our efforts and ensure the effectiveness of our operations.
+              Collaboration and communication are key to our success.
+            </p>
+            <p>
+              Training and preparedness are crucial components of our strategy. We conduct regular training exercises to keep our personnel ready for any
+              situation. This site includes training schedules, resources, and performance assessments.
+            </p>
+            <p>
+              Our team is dedicated to continuous improvement and innovation. We encourage feedback and suggestions from all personnel to enhance our
+              capabilities and effectiveness. Please use the feedback form on this site to share your insights.
+            </p>
+            <p>
+              For any technical issues or support requests, please contact our IT department through the support page. We are committed to providing the
+              necessary tools and resources to support our mission.
+            </p>
+          </section>
+        </main>
+        <footer>
+          <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
