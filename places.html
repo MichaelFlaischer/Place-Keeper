@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="X-UA-Compatible" content="IE=edge" />
     <title>Places</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
@@ -12,58 +12,41 @@
     <script src="js/userService.js"></script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user-settings.html">User Settings</a></li>
-        <li><a href="places.html">Places</a></li>
-        <li class="nav-spacer"></li>
-        <li><button onclick="applyDefaultSettings()">Apply Default Theme</button></li>
-        <li><button onclick="applyUserSettings()">Apply User Theme</button></li>
-      </ul>
-    </nav>
-    <header>
-      <h1>Places</h1>
-    </header>
-    <main>
-      <section class="places">
-        <h2>Strategic Locations</h2>
-        <p>
-          On this page, we currently display a map showing key strategic locations. In the future, you will be able to manage and update information about these
-          locations, including adding new places and editing existing ones.
-        </p>
-        <p>
-          The map is an essential tool for planning and executing our missions. Ensure that all changes are accurate and up-to-date to maintain operational
-          efficiency.
-        </p>
-        <p>
-          Each location marked on the map has been carefully selected based on intelligence and strategic importance. It is crucial that this information is
-          handled with the utmost security.
-        </p>
-        <p>
-          Future updates to this page will include detailed analytics and real-time data integration to provide comprehensive situational awareness for our
-          field operations.
-        </p>
-        <p>
-          In addition to managing locations, authorized users will be able to upload reconnaissance photos and videos, providing visual context to the strategic
-          sites.
-        </p>
-        <p>
-          Regular audits of the location data will be conducted to ensure accuracy and relevance. Please report any discrepancies to the intelligence unit
-          immediately.
-        </p>
-        <p>
-          Collaboration with allied forces is a key component of our strategy. Information about joint operations and shared locations will also be available on
-          this page.
-        </p>
-        <p>
-          Training materials and guidelines for using the map and managing location data will be accessible here. Ensure all personnel are familiar with these
-          resources.
-        </p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
-    </footer>
+    <div class="container">
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="user-settings.html">User Settings</a></li>
+          <li><a href="places.html">Places</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <header>
+          <h1>Places</h1>
+        </header>
+        <main>
+          <section id="places">
+            <h2>Strategic Locations</h2>
+            <p>
+              On this page, we currently display a map showing key strategic locations. In the future, you will be able to manage and update information about
+              these locations, including adding new places and editing existing ones.
+            </p>
+            <p>
+              The map is an essential tool for planning and executing our missions. Ensure that all changes are accurate and up-to-date to maintain operational
+              efficiency.
+            </p>
+            <p>
+              Effective management of these locations is critical to our mission success. Authorized personnel can access detailed information and strategic
+              plans.
+            </p>
+            <p>Our mapping system is continuously updated with the latest intelligence and operational data to provide accurate and actionable insights.</p>
+            <p>Please use the tools provided to mark new locations, update existing entries, and ensure all information is kept current.</p>
+          </section>
+        </main>
+        <footer>
+          <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>

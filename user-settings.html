@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Settings</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/user-settings.css" />
-    <script src="js/userService.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="X-UA-Compatible" content="IE=edge" />
+    <title>Places</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <script src="js/utilService.js"></script>
+    <script src="js/userStorage.js"></script>
+    <script src="js/userSettings.js"></script>
+    <script src="js/userService.js"></script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user-settings.html">User Settings</a></li>
-        <li><a href="places.html">Places</a></li>
-        <li class="nav-spacer"></li>
-        <li><button onclick="applyDefaultSettings()">Apply Default Theme</button></li>
-        <li><button onclick="applyUserSettings()">Apply User Theme</button></li>
-      </ul>
-    </nav>
-    <header>
-      <h1>User Settings</h1>
-    </header>
-    <main>
-      <section>
-        <h2>Welcome to the User Settings</h2>
-        <form class="user-settings-form" onsubmit="validateForm(event)">
-          <label for="email">E-Mail</label>
-          <input type="email" class="email" name="email" placeholder="Insert your email here" required />
-          <span class="error-message"></span>
+    <div class="container">
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="user-settings.html">User Settings</a></li>
+          <li><a href="places.html">Places</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <header>
+          <h1>Places</h1>
+        </header>
+        <main>
+          <section>
+            <h2>Welcome to the User Settings</h2>
+            <form class="user-settings-form" onsubmit="validateForm(event)">
+              <label for="email">E-Mail</label>
+              <input type="email" class="email" name="email" placeholder="Insert your email here" required />
+              <span class="error-message"></span>
 
-          <label for="age">Age</label>
-          <input type="range" class="age" name="age" min="0" max="100" value="18" />
-          <span class="age-display">18</span>
+              <label for="age">Age</label>
+              <input type="range" class="age" name="age" min="0" max="100" value="18" />
+              <span class="age-display">18</span>
 
-          <label for="bg-color">Set Background Color</label>
-          <input type="color" class="bg-color" name="bg-color" value="#000000" />
+              <label for="bg-color">Set Background Color</label>
+              <input type="color" class="bg-color" name="bg-color" value="#000000" />
 
-          <label for="text-color">Set Text Color</label>
-          <input type="color" class="text-color" name="text-color" value="#000000" />
+              <label for="text-color">Set Text Color</label>
+              <input type="color" class="text-color" name="text-color" value="#000000" />
 
-          <label for="birth-date">Birth Date</label>
-          <input type="date" class="birth-date" name="birth-date" />
+              <label for="birth-date">Birth Date</label>
+              <input type="date" class="birth-date" name="birth-date" />
 
-          <label for="birth-time">Birth Time</label>
-          <input type="time" class="birth-time" name="birth-time" />
+              <label for="birth-time">Birth Time</label>
+              <input type="time" class="birth-time" name="birth-time" />
 
-          <button type="submit">Save Settings</button>
-          <button type="button" class="reset-settings" onclick="resetForm()">Reset to Default</button>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
-    </footer>
-
-    <div class="notification"></div>
+              <button type="submit">Save Settings</button>
+              <button type="button" class="reset-settings" onclick="resetForm()">Reset to Default</button>
+            </form>
+          </section>
+        </main>
+        <footer>
+          <p>&copy; 2024 Michael Flaischer. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
