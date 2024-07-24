@@ -95,8 +95,22 @@
   transform: translate(-50%, -50%);
 }
 
-.dialog-message {
-  margin-bottom: 20px;
+.general-dialog h3 {
+  margin-top: 0;
+}
+
+.general-dialog label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.general-dialog input,
+.general-dialog textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
 }
 
 .dialog-actions {

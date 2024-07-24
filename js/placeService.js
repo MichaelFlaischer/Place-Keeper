@@ -48,15 +48,7 @@ function placeMarker(location) {
     })
 
     marker.addListener('click', () => {
-      showDialog(
-        `Selected location: ${marker.getPosition().lat().toFixed(6)}, ${marker.getPosition().lng().toFixed(6)}`,
-        () => {
-          console.log('Point confirmed')
-        },
-        () => {
-          console.log('Action cancelled')
-        }
-      )
+      showDialog(marker.getPosition().lat().toFixed(6), marker.getPosition().lng().toFixed(6))
     })
   }
   map.panTo(location)
@@ -75,41 +67,54 @@ function geocodeAddress(address) {
 }
 
 function getUserLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        }
-        map.setCenter(pos)
-        placeMarker(pos)
-        showNotification('Current location found')
-      },
-      () => {
-        showNotification('Error: Unable to retrieve your location.')
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
       }
-    )
-  } else {
-    showNotification('Error: Geolocation is not supported by this browser.')
-  }
+      map.setCenter(pos)
+      placeMarker(pos)
+      showNotification('Current location found')
+    },
+    () => {
+      showNotification('Error: Unable to retrieve your location.')
+    }
+  )
 }
 
-function showDialog(message, onConfirm, onCancel) {
-  const dialog = document.querySelector('.general-dialog')
-  const dialogMessage = dialog.querySelector('.dialog-message')
-  const selectedLocation = dialog.querySelector('.selected-location')
-  const form = dialog.querySelector('form')
-
-  dialogMessage.textContent = message
-  selectedLocation.textContent = message
+function showDialog(lat, lng) {
+  let dialog = document.querySelector('.general-dialog')
+  dialog.innerHTML = `
+          <form method="dialog" class="location-form">
+            <h3>Add New Location</h3>
+            <label for="lat">Latitude</label>
+            <input type="text" class="lat" name="lat" value="${lat}" readonly required>
+            <label for="lng">Longitude</label>
+            <input type="text" class="lng" name="lng" value="${lng}" readonly required>
+            <label for="name">Location Name</label>
+            <input type="text" class="name" name="name" required>
+            <label for="notes">Notes</label>
+            <textarea class="notes" name="notes" rows="6" required></textarea>
+            <div class="dialog-actions">
+              <button type="submit">Confirm</button>
+              <button type="button" onclick="closeDialog()">Cancel</button>
+            </div>
+          </form>
+        `
+  const form = dialog.querySelector('.location-form')
 
   form.onsubmit = (event) => {
-    if (event.submitter.value === 'confirm') {
-      if (onConfirm) onConfirm()
-    } else {
-      if (onCancel) onCancel()
+    event.preventDefault()
+    const name = form.querySelector('.name').value
+    const notes = form.querySelector('.notes').value
+    if (name && notes) {
+      dialog.close()
     }
+  }
+
+  dialog.querySelector('button[type="button"]').onclick = () => {
+    dialog.close()
   }
 
   dialog.showModal()
