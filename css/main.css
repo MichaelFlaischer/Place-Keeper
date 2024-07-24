@@ -1,9 +1,9 @@
 :root {
   --background-image: url('img/background.jpg');
-  --primary-bg-color: rgba(0, 0, 0, 0.7);
-  --secondary-bg-color: rgba(34, 139, 34, 0.7);
-  --text-color: #fff;
-  --hover-bg-color: rgba(255, 255, 255, 0.3);
+  --primary-bg-color: rgba(75, 83, 32, 0.7);
+  --secondary-bg-color: rgba(139, 154, 59, 0.5);
+  --text-color: #ffffff;
+  --hover-bg-color: rgba(88, 97, 37, 0.3);
 
   --input-bg-color: #333;
   --box-shadow-color: rgba(0, 0, 0, 0.5);
@@ -92,6 +92,19 @@ html {
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
+}
+
+.notification {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px var(--box-shadow-color);
+  z-index: 1001;
 }
 
 @media (orientation: landscape) {

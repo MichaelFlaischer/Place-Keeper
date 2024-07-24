@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="X-UA-Compatible" content="IE=edge" />
-    <title>Places</title>
+    <title>User Settings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
-    <script src="js/utilService.js"></script>
-    <script src="js/userStorage.js"></script>
-    <script src="js/userSettings.js"></script>
-    <script src="js/userService.js"></script>
+    <script src="js/utilService.js" defer></script>
+    <script src="js/userStorage.js" defer></script>
+    <script src="js/userSettings.js" defer></script>
+    <script src="js/userService.js" defer></script>
   </head>
-  <body>
+  <body onload="onInit()">
     <div class="container">
       <nav class="nav">
         <ul>
@@ -22,34 +22,37 @@
       </nav>
       <div class="content">
         <header>
-          <h1>Places</h1>
+          <h1>User Settings</h1>
         </header>
         <main>
           <section>
-            <h2>Welcome to the User Settings</h2>
-            <form class="user-settings-form" onsubmit="validateForm(event)">
+            <h2>Soldier and Site Colors Settings</h2>
+            <form class="user-settings-form">
               <label for="email">E-Mail</label>
               <input type="email" class="email" name="email" placeholder="Insert your email here" required />
               <span class="error-message"></span>
 
               <label for="age">Age</label>
-              <input type="range" class="age" name="age" min="0" max="100" value="18" />
+              <input type="range" class="age" name="age" min="18" max="70" value="18" />
               <span class="age-display">18</span>
 
-              <label for="bg-color">Set Background Color</label>
-              <input type="color" class="bg-color" name="bg-color" value="#000000" />
+              <label for="primary-bg-color">Primary Background Color</label>
+              <input type="color" class="primary-bg-color" name="primary-bg-color" value="#4B5320" />
 
-              <label for="text-color">Set Text Color</label>
-              <input type="color" class="text-color" name="text-color" value="#000000" />
+              <label for="secondary-bg-color">Secondary Background Color</label>
+              <input type="color" class="secondary-bg-color" name="secondary-bg-color" value="#8B9A3B" />
 
-              <label for="birth-date">Birth Date</label>
-              <input type="date" class="birth-date" name="birth-date" />
+              <label for="site-text-color">Site Text Color</label>
+              <input type="color" class="site-text-color" name="site-text-color" value="#FFFFFF" />
 
-              <label for="birth-time">Birth Time</label>
-              <input type="time" class="birth-time" name="birth-time" />
+              <label for="recruitment-date">Recruitment Date</label>
+              <input type="date" class="recruitment-date" name="recruitment-date" required />
+
+              <label for="recruitment-time">Recruitment Time</label>
+              <input type="time" class="recruitment-time" name="recruitment-time" required />
 
               <button type="submit">Save Settings</button>
-              <button type="button" class="reset-settings" onclick="resetForm()">Reset to Default</button>
+              <button type="button" class="reset-settings" onclick="resetColors()">Reset to Default</button>
             </form>
           </section>
         </main>
@@ -58,5 +61,6 @@
         </footer>
       </div>
     </div>
+    <div class="notification"></div>
   </body>
 </html>
