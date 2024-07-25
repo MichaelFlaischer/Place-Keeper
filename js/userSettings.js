@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
       recruitmentDate: form.querySelector('.recruitment-date').value,
       recruitmentTime: form.querySelector('.recruitment-time').value,
     }
-    userStorageService.saveSettings(settings)
+    userStorageService.saveSettings('userSettings', settings)
     errorMessage.style.display = 'none'
   }
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function resetColors() {
   const defaultColors = defaultSettings()
 
-  userStorageService.saveSettings(defaultColors)
+  userStorageService.saveSettings('userSettings', defaultColors)
 
   loadColorsSettings()
 

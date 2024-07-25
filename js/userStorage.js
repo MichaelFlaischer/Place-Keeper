@@ -1,11 +1,11 @@
 'use strict'
 
 const userStorageService = {
-  saveSettings: function (settings) {
-    localStorage.setItem('userSettings', JSON.stringify(settings))
+  saveSettings: function (key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
   },
-  loadSettings: function () {
-    const settings = localStorage.getItem('userSettings')
+  loadSettings: function (key) {
+    const settings = localStorage.getItem(key)
     return settings ? JSON.parse(settings) : null
   },
 }

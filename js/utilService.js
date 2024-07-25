@@ -50,3 +50,31 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI / 180)
 }
+
+function generateRandomID() {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  const numbers = '0123456789'
+  const specialChars = '!@#$%^&*()-_=+[]{}|;:",.<>?/`~'
+
+  function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)]
+  }
+
+  const parts = [
+    getRandomElement(numbers),
+    getRandomElement(letters),
+    getRandomElement(numbers),
+    getRandomElement(letters),
+    getRandomElement(specialChars),
+    getRandomElement(letters),
+    getRandomElement(numbers),
+    getRandomElement(letters),
+  ]
+
+  for (let i = parts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[parts[i], parts[j]] = [parts[j], parts[i]]
+  }
+
+  return parts.join('')
+}

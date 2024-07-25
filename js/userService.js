@@ -5,11 +5,11 @@ function onInit() {
 }
 
 function loadColorsSettings() {
-  const settings = userStorageService.loadSettings()
+  const settings = userStorageService.loadSettings('userSettings')
 
   if (!settings) {
     const defaultColors = defaultSettings()
-    userStorageService.saveSettings(defaultColors)
+    userStorageService.saveSettings('userSettings', defaultColors)
     applySettings(defaultColors)
   } else {
     applySettings(settings)
