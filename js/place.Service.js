@@ -129,4 +129,7 @@ function deletePoint(id) {
   removeTarget(id)
   renderPoints()
   showNotification('The target has been deleted')
+  if (getAllTargets().length === 0) {
+    clearMarkers()
+  }
 }

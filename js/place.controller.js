@@ -75,22 +75,33 @@ function renderPoints() {
   let elPoints = ''
 
   pointsListUl.innerHTML = `
-      <button onclick="selectAllPoints()">Select All</button>
-      <button onclick="showSelectedPoints()">Show Selected Points</button>
+      <div class="points-list-actions">
+          <button onclick="selectAllPoints()">Select All</button>
+          <button onclick="showSelectedPoints()">Show Selected Points</button>
+          <button onclick="deleteSelectedPoints()">Delete Selected Points</button>
+          <button onclick="downloadSelectedPoints()">Download Selected Points</button>
+      </div>
     `
 
   points.forEach((point) => {
     elPoints += `
-          <li>
-            <input type="checkbox" class="point-checkbox" data-lat="${point.lat}" data-lng="${point.lng}">
-            <span>${point.name}</span>
-            <button onclick="showDialog(${point.lat}, ${point.lng}, '${point.id}')">View & Edit</button>
-            <button onclick="setCenterAndMarker(${point.lat},${point.lng})">Center Map</button>
-            <button onclick="deletePoint('${point.id}')">Delete</button>
-          </li>
-        `
+            <li>
+              <input type="checkbox" class="point-checkbox" data-lat="${point.lat}" data-lng="${point.lng}" data-notes="${point.notes}">
+              <span>${point.name}</span>
+              <button onclick="showDialog(${point.lat}, ${point.lng}, '${point.id}')">View & Edit</button>
+            </li>
+          `
   })
   pointsListUl.innerHTML += elPoints
+}
+
+function deleteSelectedPoints() {
+  const checkboxes = document.querySelectorAll('.point-checkbox:checked')
+  checkboxes.forEach((checkbox) => {
+    const targetId = checkbox.getAttribute('data-id')
+    deletePoint(targetId)
+  })
+  renderPoints()
 }
 
 function showSelectedPoints() {
@@ -112,4 +123,36 @@ function selectAllPoints() {
   checkboxes.forEach((checkbox) => {
     checkbox.checked = true
   })
+}
+
+function downloadSelectedPoints() {
+  const checkboxes = document.querySelectorAll('.point-checkbox:checked')
+  const selectedPoints = []
+
+  checkboxes.forEach((checkbox) => {
+    const lat = checkbox.getAttribute('data-lat').toString()
+    const lng = checkbox.getAttribute('data-lng').toString()
+    const notes = checkbox.getAttribute('data-notes').toString()
+    const name = checkbox.nextElementSibling.textContent.toString()
+    selectedPoints.push({ name, lat, lng, notes })
+  })
+
+  if (selectedPoints.length === 0) {
+    showNotification('No points selected for download')
+    return
+  }
+
+  let csvContent = 'data:text/csv;charset=utf-8,"Name","Latitude","Longitude","Notes"\n'
+
+  selectedPoints.forEach((point) => {
+    csvContent += `"${point.name.replace(/"/g, '""')}","${point.lat}","${point.lng}","${point.notes.replace(/"/g, '""')}"\n`
+  })
+
+  const encodedUri = encodeURI(csvContent)
+  const link = document.createElement('a')
+  link.setAttribute('href', encodedUri)
+  link.setAttribute('download', 'selected_points.csv')
+  link.click()
+
+  showNotification('Downloaded selected points as CSV')
 }

@@ -18,23 +18,21 @@
 
 .address-input {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   justify-content: space-between;
 }
 
 .address-input input {
-  flex: 1;
+  flex: 1 0 var(--input-width);
   padding: 10px;
   font-size: 1rem;
-  width: var(--input-width);
 }
 
 .search-buttons {
   display: flex;
+  flex: 1 0 auto;
   gap: 10px;
-  width: 100%;
   justify-content: flex-end;
 }
 
@@ -64,6 +62,28 @@
   margin-bottom: 10px;
 }
 
+.points-list-actions {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.points-list-actions button {
+  flex: 0 0 8ch;
+  padding: 10px;
+  font-size: 0.8rem;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.points-list-actions button:hover {
+  background-color: var(--hover-bg-color);
+}
+
 .points-list ul {
   list-style-type: none;
   padding: 0;
@@ -75,6 +95,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 0;
+  border: 1px solid var(--primary-bg-color);
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .points-list ul li span {
@@ -82,7 +105,7 @@
 }
 
 .points-list ul li button {
-  flex: 1;
+  flex: 0 0 8ch;
   padding: 5px;
   margin-left: 10px;
   background-color: var(--primary-bg-color);
