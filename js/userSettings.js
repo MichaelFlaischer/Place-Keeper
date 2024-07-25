@@ -1,5 +1,6 @@
 'use strict'
 
+// Event listener for DOMContentLoaded to initialize the form and its events.
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.user-settings-form')
   const ageInput = document.querySelector('.age')
@@ -7,10 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const emailInput = document.querySelector('.email')
   const errorMessage = document.querySelector('.error-message')
 
+  // Event listener to update age display when age input changes.
   ageInput.addEventListener('input', function () {
     ageDisplay.textContent = ageInput.value
   })
 
+  // Event listener to handle form submission.
   form.addEventListener('submit', function (event) {
     event.preventDefault()
     if (validateEmail(emailInput.value)) {
@@ -23,11 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
     onInit()
   })
 
+  /**
+   * Validates the given email address.
+   * @param {string} email - The email address to validate.
+   * @returns {boolean} True if the email is valid, false otherwise.
+   */
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(email)
   }
 
+  /**
+   * Saves the settings from the form to localStorage.
+   */
   function saveSettings() {
     const settings = {
       email: form.querySelector('.email').value,
@@ -45,6 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
   onInit()
 })
 
+/**
+ * Resets the color settings to their default values.
+ * Actions:
+ * - Saves the default settings to localStorage.
+ * - Reloads the color settings.
+ * - Resets the form fields to their default values.
+ */
 function resetColors() {
   const defaultColors = defaultSettings()
 

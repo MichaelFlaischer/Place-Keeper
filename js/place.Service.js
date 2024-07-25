@@ -4,7 +4,18 @@ let map
 let geocoder
 let markers = []
 
+/**
+ * Initializes the map and sets up event listeners.
+ * Actions:
+ * - Checks if there are any targets; if not, adds initial targets.
+ * - Sets up the map with default settings.
+ * - Attempts to get the user's location to center the map.
+ * - Adds a click listener to the map to place markers.
+ */
 function initMap() {
+  if (getAllTargets().length === 0) {
+    addInitialTargets()
+  }
   const defaultLocation = { lat: 32.0853, lng: 34.7818 }
 
   map = new google.maps.Map(document.querySelector('.map'), {
@@ -35,6 +46,11 @@ function initMap() {
   })
 }
 
+/**
+ * Sets the map center and places a marker at the given location.
+ * @param {number} lat - Latitude of the location.
+ * @param {number} lng - Longitude of the location.
+ */
 function setCenterAndMarker(lat, lng) {
   const location = { lat, lng }
   placeNewMarker(location)
@@ -42,11 +58,23 @@ function setCenterAndMarker(lat, lng) {
   showNotification(`Centered map at ${lat}, ${lng}`)
 }
 
+/**
+ * Centers the map at the given location.
+ * @param {Object} location - The location to center the map on.
+ * @param {number} location.lat - Latitude of the location.
+ * @param {number} location.lng - Longitude of the location.
+ */
 function centerMap(location) {
   map.setCenter(location)
   map.panTo(location)
 }
 
+/**
+ * Places a single marker at the given location on the map.
+ * @param {Object} location - The location to place the marker.
+ * @param {number} location.lat - Latitude of the location.
+ * @param {number} location.lng - Longitude of the location.
+ */
 function placeMarker(location) {
   if (marker) {
     marker.setPosition(location)
@@ -59,6 +87,12 @@ function placeMarker(location) {
   map.panTo(location)
 }
 
+/**
+ * Places a new marker at the given location on the map.
+ * @param {Object} location - The location to place the marker.
+ * @param {number} location.lat - Latitude of the location.
+ * @param {number} location.lng - Longitude of the location.
+ */
 function placeNewMarker(location) {
   const marker = new google.maps.Marker({
     position: location,
@@ -72,12 +106,21 @@ function placeNewMarker(location) {
   showNotification('Placed a new marker on the map')
 }
 
+/**
+ * Clears all markers from the map.
+ * Actions:
+ * - Removes all markers from the map and clears the markers array.
+ */
 function clearMarkers() {
   markers.forEach((marker) => marker.setMap(null))
   markers = []
   showNotification('All markers have been removed')
 }
 
+/**
+ * Geocodes an address to get its location and centers the map on it.
+ * @param {string} address - The address to geocode.
+ */
 function geocodeAddress(address) {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === 'OK') {
@@ -90,6 +133,12 @@ function geocodeAddress(address) {
   })
 }
 
+/**
+ * Gets the user's current location using the browser's geolocation API.
+ * Actions:
+ * - Attempts to get the user's current position and center the map on it.
+ * - Shows a notification if the location retrieval fails.
+ */
 function getUserLocation() {
   clearMarkers()
 
@@ -108,6 +157,12 @@ function getUserLocation() {
   )
 }
 
+/**
+ * Gets the address for a given latitude and longitude.
+ * @param {number} lat - Latitude of the location.
+ * @param {number} lng - Longitude of the location.
+ * @param {function} callback - Callback function to handle the address.
+ */
 function getAddress(lat, lng, callback) {
   const geocoder = new google.maps.Geocoder()
   const latlng = new google.maps.LatLng(lat, lng)
@@ -125,6 +180,10 @@ function getAddress(lat, lng, callback) {
   })
 }
 
+/**
+ * Deletes a target by its ID and re-renders the points on the map.
+ * @param {string} id - The ID of the target to delete.
+ */
 function deletePoint(id) {
   removeTarget(id)
   renderPoints()
@@ -135,6 +194,12 @@ function deletePoint(id) {
   }
 }
 
+/**
+ * Adds initial targets to the map if no targets exist.
+ * Actions:
+ * - Adds predefined targets to the storage.
+ * - Renders the points on the map.
+ */
 function addInitialTargets() {
   const targets = [
     {
