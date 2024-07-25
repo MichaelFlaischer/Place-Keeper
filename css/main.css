@@ -36,6 +36,7 @@ html {
   justify-content: center;
   align-items: center;
 }
+
 header {
   background-color: var(--secondary-bg-color);
   padding: 1em;
@@ -73,7 +74,7 @@ section p {
 
 form {
   background-color: var(--primary-bg-color);
-  color: var(--text-color);
+  color: var (--text-color);
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 10px var(--box-shadow-color);
@@ -155,6 +156,7 @@ label {
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
+  justify-content: center;
 }
 
 .notification {

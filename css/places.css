@@ -1,5 +1,5 @@
 :root {
-  --input-width: 60%;
+  --input-width: 50%;
   --button-width: 20%;
   --map-height: 60vh;
   --map-height-landscape: 60vh;
@@ -31,7 +31,6 @@
 
 .search-buttons {
   display: flex;
-  flex: 1 0 auto;
   gap: 10px;
   justify-content: flex-end;
 }
@@ -207,5 +206,14 @@
 
   .points-list ul li {
     flex-direction: row;
+  }
+}
+
+@media (orientation: landscape) {
+  .search-buttons {
+    display: flex;
+    flex: 1 0 auto;
+    gap: 10px;
+    justify-content: flex-end;
   }
 }
