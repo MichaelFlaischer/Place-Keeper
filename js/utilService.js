@@ -54,7 +54,6 @@ function deg2rad(deg) {
 function generateRandomID() {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
   const numbers = '0123456789'
-  const specialChars = '!@#$%^&*()-_=+[]{}|;:",.<>?/`~'
 
   function getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)]
@@ -65,7 +64,7 @@ function generateRandomID() {
     getRandomElement(letters),
     getRandomElement(numbers),
     getRandomElement(letters),
-    getRandomElement(specialChars),
+    getRandomElement(letters),
     getRandomElement(letters),
     getRandomElement(numbers),
     getRandomElement(letters),

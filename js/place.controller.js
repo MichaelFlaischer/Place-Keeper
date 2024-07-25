@@ -16,14 +16,14 @@ function showDialog(lat, lng, targetId = null) {
 
     let name = address
     let notes = ''
-    let title = 'Add New Location'
+    let title = 'Add New Target'
 
     if (targetId) {
       const target = userStorageService.loadSettings('target-' + targetId)
       if (target) {
         name = target.name
         notes = target.notes
-        title = 'Edit Location'
+        title = 'Edit Target'
       }
     }
 
@@ -34,12 +34,12 @@ function showDialog(lat, lng, targetId = null) {
           <input type="text" class="lat" name="lat" value="${lat}" readonly required>
           <label for="lng">Longitude</label>
           <input type="text" class="lng" name="lng" value="${lng}" readonly required>
-          <label for="name">Location Name</label>
+          <label for="name">Target Name</label>
           <input type="text" class="name" name="name" value="${name}" required>
           <label for="notes">Notes</label>
           <textarea class="notes" name="notes" rows="6" required>${notes}</textarea>
           <div class="dialog-actions">
-            <button type="submit">Save target</button>
+            <button type="submit">Save Target</button>
             <button type="button" onclick="closeDialog()">Cancel</button>
           </div>
         </form>
@@ -77,16 +77,16 @@ function renderPoints() {
   pointsListUl.innerHTML = `
       <div class="points-list-actions">
           <button onclick="selectAllPoints()">Select All</button>
-          <button onclick="showSelectedPoints()">Show Selected Points</button>
-          <button onclick="deleteSelectedPoints()">Delete Selected Points</button>
-          <button onclick="downloadSelectedPoints()">Download Selected Points</button>
+          <button onclick="showSelectedPoints()">Show Selected Targets</button>
+          <button onclick="deleteSelectedPoints()">Delete Selected Targets</button>
+          <button onclick="downloadSelectedPoints()">Download Selected Targets</button>
       </div>
     `
 
   points.forEach((point) => {
     elPoints += `
             <li>
-              <input type="checkbox" class="point-checkbox" data-lat="${point.lat}" data-lng="${point.lng}" data-notes="${point.notes}">
+              <input type="checkbox" class="point-checkbox" data-lat="${point.lat}" data-lng="${point.lng}" data-notes="${point.notes}" data-id="${point.id}">
               <span>${point.name}</span>
               <button onclick="showDialog(${point.lat}, ${point.lng}, '${point.id}')">View & Edit</button>
             </li>
@@ -99,6 +99,7 @@ function deleteSelectedPoints() {
   const checkboxes = document.querySelectorAll('.point-checkbox:checked')
   checkboxes.forEach((checkbox) => {
     const targetId = checkbox.getAttribute('data-id')
+
     deletePoint(targetId)
   })
   renderPoints()
@@ -138,7 +139,7 @@ function downloadSelectedPoints() {
   })
 
   if (selectedPoints.length === 0) {
-    showNotification('No points selected for download')
+    showNotification('No targets selected for download')
     return
   }
 
@@ -151,8 +152,8 @@ function downloadSelectedPoints() {
   const encodedUri = encodeURI(csvContent)
   const link = document.createElement('a')
   link.setAttribute('href', encodedUri)
-  link.setAttribute('download', 'selected_points.csv')
+  link.setAttribute('download', 'selected_targets.csv')
   link.click()
 
-  showNotification('Downloaded selected points as CSV')
+  showNotification('Downloaded selected targets as CSV')
 }

@@ -1,0 +1,21 @@
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='time'],
+input[type='color'],
+input[type='range'] {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+}
+
+input[type='color'] {
+  height: 40px;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}

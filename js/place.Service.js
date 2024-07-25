@@ -131,5 +131,39 @@ function deletePoint(id) {
   showNotification('The target has been deleted')
   if (getAllTargets().length === 0) {
     clearMarkers()
+    addInitialTargets()
   }
+}
+
+function addInitialTargets() {
+  const targets = [
+    {
+      id: generateRandomID(),
+      lat: 14.7976,
+      lng: 42.9541,
+      name: 'Hudaydah Port',
+      notes: 'Strategic port in Yemen, important for supply routes.',
+    },
+    {
+      id: generateRandomID(),
+      lat: 35.6892,
+      lng: 51.389,
+      name: 'Tehran',
+      notes: 'Capital city of Iran, key strategic target.',
+    },
+    {
+      id: generateRandomID(),
+      lat: 33.8886,
+      lng: 35.4955,
+      name: 'Beirut',
+      notes: 'Capital city of Lebanon, important for regional stability.',
+    },
+  ]
+
+  targets.forEach((target) => {
+    userStorageService.saveSettings('target-' + target.id, target)
+  })
+
+  showNotification('Initial targets have been added')
+  renderPoints()
 }
