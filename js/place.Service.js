@@ -2,7 +2,7 @@
 
 let map
 let geocoder
-let marker
+let markers = []
 
 function initMap() {
   const defaultLocation = { lat: 32.0853, lng: 34.7818 }
@@ -24,17 +24,30 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
 
   getUserLocation(setCenterAndMarker, () => {
+    clearMarkers()
     setCenterAndMarker(defaultLocation.lat, defaultLocation.lng)
     showNotification('Unable to retrieve your location. Showing default location.')
   })
 
   map.addListener('click', (e) => {
+    clearMarkers()
     setCenterAndMarker(e.latLng.lat(), e.latLng.lng())
   })
 }
 
 function setCenterAndMarker(lat, lng) {
-  const location = { lat: lat, lng: lng }
+  const location = { lat, lng }
+  placeNewMarker(location)
+  centerMap(location)
+  showNotification(`Centered map at ${lat}, ${lng}`)
+}
+
+function centerMap(location) {
+  map.setCenter(location)
+  map.panTo(location)
+}
+
+function placeMarker(location) {
   if (marker) {
     marker.setPosition(location)
   } else {
@@ -42,13 +55,27 @@ function setCenterAndMarker(lat, lng) {
       position: location,
       map: map,
     })
-
-    marker.addListener('click', () => {
-      showDialog(marker.getPosition().lat().toFixed(6), marker.getPosition().lng().toFixed(6))
-    })
   }
-  map.setCenter(location)
   map.panTo(location)
+}
+
+function placeNewMarker(location) {
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  })
+  markers.push(marker)
+
+  marker.addListener('click', () => {
+    showDialog(marker.getPosition().lat().toFixed(6), marker.getPosition().lng().toFixed(6))
+  })
+  showNotification('Placed a new marker on the map')
+}
+
+function clearMarkers() {
+  markers.forEach((marker) => marker.setMap(null))
+  markers = []
+  showNotification('All markers have been removed')
 }
 
 function geocodeAddress(address) {
@@ -64,6 +91,8 @@ function geocodeAddress(address) {
 }
 
 function getUserLocation() {
+  clearMarkers()
+
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const pos = {
@@ -94,4 +123,10 @@ function getAddress(lat, lng, callback) {
       callback(`Geocoder failed due to: ${status}`)
     }
   })
+}
+
+function deletePoint(id) {
+  removeTarget(id)
+  renderPoints()
+  showNotification('The target has been deleted')
 }

@@ -15,3 +15,11 @@ function getAllTargets() {
     .filter((key) => key.startsWith('target-'))
     .map((key) => JSON.parse(localStorage.getItem(key)))
 }
+
+function removeTarget(id) {
+  removeItemFromLocalStorage('target-' + id)
+}
+
+function removeItemFromLocalStorage(key) {
+  localStorage.removeItem(key)
+}

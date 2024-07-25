@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="X-UA-Compatible" content="IE=edge" />
-    <title>Places</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Places</title>
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/places.css" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw_JKxikQSCVB_QccweBoxrmKitqptLJs&callback=initMap" defer></script>
@@ -14,7 +13,7 @@
     <script src="js/place.Service.js" defer></script>
     <script src="js/place.controller.js" defer></script>
   </head>
-  <body onload="onInit(); initMap()">
+  <body onload="onInit()">
     <div class="container">
       <nav class="nav">
         <ul>
@@ -53,11 +52,7 @@
               </div>
               <div class="points-list">
                 <h3>Points List</h3>
-                <ul>
-                  <li>Point 1: 32.0853, 34.7818</li>
-                  <li>Point 2: 31.7683, 35.2137</li>
-                  <li>Point 3: 29.5581, 34.9482</li>
-                </ul>
+                <ul class="points-list-ul"></ul>
               </div>
               <div class="map"></div>
             </div>

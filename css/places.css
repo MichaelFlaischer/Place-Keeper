@@ -70,7 +70,30 @@
 }
 
 .points-list ul li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px 0;
+}
+
+.points-list ul li span {
+  flex: 1;
+}
+
+.points-list ul li button {
+  flex: 1;
+  padding: 5px;
+  margin-left: 10px;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.points-list ul li button:hover {
+  background-color: var(--hover-bg-color);
 }
 
 .map {
@@ -86,7 +109,7 @@
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background-color: var(--primary-bg-color);
-  color: var(--text-color);
+  color: var (--text-color);
   width: 300px;
   max-width: 80%;
   position: fixed;
@@ -157,5 +180,9 @@
     grid-column: 1;
     grid-row: 2;
     height: var(--map-height-landscape);
+  }
+
+  .points-list ul li {
+    flex-direction: row;
   }
 }
