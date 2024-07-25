@@ -1,8 +1,8 @@
 :root {
   --input-width: 50%;
   --button-width: 20%;
-  --map-height: 60vh;
-  --map-height-landscape: 60vh;
+  --map-height: 50vh;
+  --map-height-landscape: 50vh;
 }
 
 .places {
@@ -215,5 +215,16 @@
     flex: 1 0 auto;
     gap: 10px;
     justify-content: flex-end;
+  }
+}
+@media (orientation: portrait) {
+  .search-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-buttons button {
+    width: 100%;
+    text-align: center;
   }
 }
