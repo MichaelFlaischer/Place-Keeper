@@ -9,3 +9,9 @@ const userStorageService = {
     return settings ? JSON.parse(settings) : null
   },
 }
+
+function getAllTargets() {
+  return Object.keys(localStorage)
+    .filter((key) => key.startsWith('target-'))
+    .map((key) => JSON.parse(localStorage.getItem(key)))
+}
