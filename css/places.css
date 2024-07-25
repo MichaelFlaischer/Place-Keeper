@@ -209,15 +209,7 @@
   }
 }
 
-@media (orientation: landscape) {
-  .search-buttons {
-    display: flex;
-    flex: 1 0 auto;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-}
-@media (orientation: portrait) {
+@media (orientation: portrait), (max-width: 768px) {
   .search-buttons {
     flex-direction: column;
     align-items: stretch;
